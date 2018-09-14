@@ -8,25 +8,21 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 public class Adapter extends Interface {
-
+    Processador3 filtro;
     @Override
     public int[][] carregarImagem(String nome) {
-        BufferedImage img;
-        int saida[][] = null;
-        try {
-            img = ImageIO.read(new File(nome));
-            int linha = img.getWidth();
-            int coluna = img.getHeight();
-            saida = new int[linha][coluna];
-            int entrada[][][] = Processador3.loadImage(nome);                
-            for(int i = 0;i<linha;i++){
-                for(int j=0;j<coluna;j++)
-                    saida[i][j] = (entrada[i][j][0] + entrada[i][j][1] + entrada[i][j][2])/3;
-            }
-        } catch (IOException ex) {
-            System.out.println("Erro");
+        if(filtro == null || nome != filtro.getNomeArquivo()){
+            try {
+                filtro = new Processador3(nome);
+            } catch (IOException ex) { System.out.println("Erro na leitura do arquivo");}
         }
-        return saida;
+        int[][] retorno = new int[filtro.getSize(0)][filtro.getSize(1)];
+        for(int i = 0;i < filtro.getSize(0);i++){
+            for(int j = 0;j < filtro.getSize(1);j++){
+                retorno[i][j] = (filtro.getImagem()[i][j][0] + filtro.getImagem()[i][j][1] + filtro.getImagem()[i][j][2])/3;
+            }
+        }
+        return retorno;
     }
 
     @Override
@@ -37,6 +33,16 @@ public class Adapter extends Interface {
     @Override
     public int[][] binaria(int[][] matriz) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getWidth() {
+        return filtro.getSize(0);
+    }
+
+    @Override
+    public int getHeight() {
+        return filtro.getSize(1);
     }
     
 }
