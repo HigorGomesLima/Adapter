@@ -11,6 +11,7 @@ public class Processador3 {
     
     public Processador3(String nome) throws IOException{
         nomeArquivo = nome;
+        dimensao = new int[2];
         BufferedImage img = ImageIO.read(new File(nome));
         int linha = img.getWidth();
         int coluna = img.getHeight();
