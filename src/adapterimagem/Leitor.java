@@ -21,6 +21,7 @@ public class Leitor {
                 raster.setPixel(i, j, cor);
             }
         }
-        ImageIO.write(img, "PNG", new File("teste.png"));
+        Tela tv = new Tela(img);
+        tv.setVisible(true);
     }
 }

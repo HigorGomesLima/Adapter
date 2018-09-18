@@ -28,6 +28,14 @@ public class Processador3 {
         this.imagem = matrizDaImagem;   
     }
     
+    public int[][][] filtroB(){
+        if(imagem != null){
+            
+        }else{
+            System.out.println("Erro");
+        }
+    }
+    
     public int getSize(int pos){
         int retorno = dimensao[pos];
         return retorno;
