@@ -12,7 +12,6 @@ public class Leitor {
         String nomeArquivo = "foto.png";
         Interface pdi = new Adapter();
         int[][] imageAtual = pdi.carregarImagem(nomeArquivo);
-        imageAtual = pdi.media3(imageAtual, pdi.getWidth(), pdi.getHeight());
         BufferedImage img = new BufferedImage(pdi.getWidth(),pdi.getHeight(),1);
         WritableRaster raster = img.getRaster();
         for(int i = 0;i < pdi.getWidth();i++){
