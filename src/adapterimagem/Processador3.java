@@ -28,8 +28,9 @@ public class Processador3 {
         this.imagem = matrizDaImagem;   
     }
     
-    public int[][][] filtroB(int[][][] nImg,int w,int h) throws IOException{
-        
+    public int[][][] filtroB(int[][][] nImg,int[] s){
+        int w = s[0];
+        int h = s[1];
         int[][][] retorno = new int[w][h][3];
         for(int i = 0;i < w;i++){
             for(int j = 0; j < h;j++){

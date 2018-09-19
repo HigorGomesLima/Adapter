@@ -26,8 +26,24 @@ public class Adapter extends Interface {
     }
 
     @Override
-    public int[][] binaria(int[][] matriz) {
-    
+    public int[][] binaria(int[][] matriz,int w,int h) {
+        int[][] retorno = new int[w][h];
+        int[] aux = {w,h};
+        int[][][] arquivoProcessa = new int[w][h][3];
+        for(int i = 0;i < w;i++){
+            for(int j = 0; j < h;j++){
+                arquivoProcessa[i][j][0] = matriz[i][j];
+                arquivoProcessa[i][j][1] = matriz[i][j];
+                arquivoProcessa[i][j][2] = matriz[i][j];
+            }
+        }
+        arquivoProcessa = filtro.filtroB(arquivoProcessa, aux);
+        for(int i = 0;i < w;i++){
+            for(int j = 0; j < h;j++){
+                retorno[i][j] = arquivoProcessa[i][j][0] * 255;
+            }
+        }
+        return retorno;
     }
 
     @Override
