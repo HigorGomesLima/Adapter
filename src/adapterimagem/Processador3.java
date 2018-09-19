@@ -34,9 +34,27 @@ public class Processador3 {
         int[][][] retorno = new int[w][h][3];
         for(int i = 0;i < w;i++){
             for(int j = 0; j < h;j++){
+                retorno[i][j][0] = nImg[i][j][0]/128;
                 retorno[i][j][1] = nImg[i][j][1]/128;
                 retorno[i][j][2] = nImg[i][j][2]/128;
-                retorno[i][j][3] = nImg[i][j][3]/128;
+            }
+        }
+        return retorno;
+    }
+    
+    public int[][][] media(int[][][] nImg,int[] s){
+        int w = s[0];
+        int h = s[1];
+        int[][][] retorno = new int[w][h][3];
+        for(int i = 1;i < w-1;i++){
+            for(int j = 1; j < h-1;j++){
+                int soma = 0;
+                for(int k = 0;k < 3;k++){
+                    soma += nImg[i-1][j-1][k] + nImg[i][j-1][k] + nImg[i][j][k] + nImg[i][j+1][k]
+                            + nImg[i-1][j+1][k] + nImg[i+1][j-1][k] + nImg[i+1][j][k] + nImg[i+1][j+1][k] + nImg[i-1][j][k] ;
+                    soma = soma/9;
+                    retorno[i][j][k] = soma;
+                }
             }
         }
         return retorno;
