@@ -28,12 +28,17 @@ public class Processador3 {
         this.imagem = matrizDaImagem;   
     }
     
-    public int[][][] filtroB(){
-        if(imagem != null){
-            
-        }else{
-            System.out.println("Erro");
+    public int[][][] filtroB(int[][][] nImg,int w,int h) throws IOException{
+        
+        int[][][] retorno = new int[w][h][3];
+        for(int i = 0;i < w;i++){
+            for(int j = 0; j < h;j++){
+                retorno[i][j][1] = nImg[i][j][1]/128;
+                retorno[i][j][2] = nImg[i][j][2]/128;
+                retorno[i][j][3] = nImg[i][j][3]/128;
+            }
         }
+        return retorno;
     }
     
     public int getSize(int pos){

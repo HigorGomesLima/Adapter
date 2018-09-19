@@ -27,7 +27,7 @@ public class Adapter extends Interface {
 
     @Override
     public int[][] binaria(int[][] matriz) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
