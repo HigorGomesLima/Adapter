@@ -3,7 +3,9 @@ package adapterimagem;
 import java.io.IOException;
 
 public class Adapter extends Interface {
+    
     Processador3 filtro;
+    
     @Override
     public int[][] carregarImagem(String nome) {
         if(filtro == null || nome != filtro.getNomeArquivo()){
@@ -70,6 +72,20 @@ public class Adapter extends Interface {
     @Override
     public int getHeight() {
         return filtro.getSize(1);
+    }
+
+    @Override
+    public int[][] getImagem() {
+        int w = filtro.getSize(0);
+        int h = filtro.getSize(1);
+        int[][] retorno = new int[w][h];
+        int[][][] arquivoProcessa = filtro.getImagem();
+        for(int i = 0;i < w;i++){
+            for(int j = 0; j < h;j++){
+                retorno[i][j] = (arquivoProcessa[i][j][0] + arquivoProcessa[i][j][1] + arquivoProcessa[i][j][2])/3;
+            }
+        }
+        return retorno;
     }
     
 }

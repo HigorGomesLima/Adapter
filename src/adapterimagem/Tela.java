@@ -92,7 +92,7 @@ public class Tela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tecla_mediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecla_mediaActionPerformed
-        int[][] imageAtual = pdi.carregarImagem(nomeArquivo);
+        int[][] imageAtual = pdi.getImagem();
         imageAtual = pdi.media3(imageAtual, pdi.getWidth(), pdi.getHeight());
         BufferedImage img = new BufferedImage(pdi.getWidth(),pdi.getHeight(),1);
         WritableRaster raster = img.getRaster();
@@ -107,7 +107,7 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_tecla_mediaActionPerformed
 
     private void tecla_binarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecla_binarioActionPerformed
-        int[][] imageAtual = pdi.carregarImagem(nomeArquivo);
+        int[][] imageAtual = pdi.getImagem();
         imageAtual = pdi.binaria(imageAtual, pdi.getWidth(), pdi.getHeight());
         BufferedImage img = new BufferedImage(pdi.getWidth(),pdi.getHeight(),1);
         WritableRaster raster = img.getRaster();
@@ -122,7 +122,7 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_tecla_binarioActionPerformed
 
     private void tecla_normalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecla_normalActionPerformed
-        int[][] imageAtual = pdi.carregarImagem(nomeArquivo);
+        int[][] imageAtual = pdi.getImagem();
         BufferedImage img = new BufferedImage(pdi.getWidth(),pdi.getHeight(),1);
         WritableRaster raster = img.getRaster();
         for(int i = 0;i < pdi.getWidth();i++){
